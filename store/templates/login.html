@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{%block signup%}
+
+<section>
+<div class="container mt-5 pt-5">
+    <div class="row">           
+        <div class="col-12 col-sm-7 col-md-6 m-auto">
+            <div class="card border-0 shadow">
+                <div class="card-body mt-2">
+        
+                    <h3 class="alert alert-light border rounded text-center py-3 mb-2"><strong>Login</strong> </h3>
+
+                    <form action="/login" method="POST">
+                        {% csrf_token %}
+
+                        <!-- error -->
+                        {%if error%}             
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{error}}
+                        <strong></strong> 
+                        </div>
+                        <script>
+                            var alertList = document.querySelectorAll('.alert');
+                            alertList.forEach(function (alert) {
+                            new bootstrap.Alert(alert)
+                            })
+                        </script>
+                        {%endif%}   
+
+                        <!-- email -->
+
+                        <div class="form-group">
+                            <label for=""> <strong>Email</strong>  </label>
+                            <input required type="email" name="email" id="" value="{{values.email}}" class="form-control my-3 py-2"
+                            aria-describedby="emailHelpId" placeholder="Example@gmail.com">            
+                        </div> 
+
+                        <!-- password  -->
+                        <div class="form-group ">
+                            <label for=""> <strong>Password</strong>   </label>
+                            <input type="password" name="password" id="" class="form-control my-3 py-2"
+                            placeholder="**********">            
+                        </div>
+                        <!-- submit -->
+                        <div class="form-group text-center">
+                            <input class="btn btn-primary" type="submit" value="Login">
+                            <a href="/signup" class="nav-link">Already have an account ?</a>
+
+                        </div>
+                                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{%block signup%}
+<div class="container mt-1 pt-1 ">
+    
+    <div class="p-4 m-4 mx-auto">
+        <div class="col-lg-8 border rounded mx-auto m-4 p-4 m-3 p-5 ">
+            <h3 class="alert alert-light border rounded text-center text-dark">Create An Account</h3>
+            <form action="/signup" method="POST">
+                {% csrf_token %}
+
+               <!-- error -->
+                {%if error%}             
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  {{error}}
+                  <strong></strong> 
+                </div>
+                <script>
+                    var alertList = document.querySelectorAll('.alert');
+                    alertList.forEach(function (alert) {
+                      new bootstrap.Alert(alert)
+                    })
+                </script>
+                {%endif%}
+                                    
+                <!-- first name -->
+                <div class="form-group">
+                    <label for=""> First Name </label>
+                    <input type="text"  name="FirstName" id="" value="{{values.first_name}}" class="form-control my-3 py-2" placeholder="">
+                </div>
+
+                <!--  -->
+                <div class="form-group">
+                    <label for=""> Last Name </label>
+                    <input type="text" name="LastName" id="" value="{{values.last_name}}" class="form-control my-3 py-2">
+            
+                </div>
+
+                <!-- phone -->
+                <div class="form-group">
+                    <label for=""> Phone </label>
+                    <input type="text" name="Phone" id="" value="{{values.phone}}" class="form-control my-3 py-2"
+                    placeholder="+9112345678988">            
+                </div>
+
+                <!-- email -->
+
+                <div class="form-group">
+                    <label for=""> Email </label>
+                    <input required type="email" name="email" id="" value="{{values.email}}" class="form-control my-3 py-2"
+                    aria-describedby="emailHelpId" placeholder="Example@gmail.com">            
+                </div>
+
+                <!-- password  -->
+                <div class="form-group">
+                    <label for=""> Passoword </label>
+                    <input type="password" name="password" id="" class="form-control my-3 py-2"
+                    placeholder="**********">            
+                </div>
+                <!-- submit -->
+                <div class="form-group">
+                    <input class="btn btn-sm btn-info" type="submit" value="Create An Account">
+
+                </div>
+                  
+            </form>
+        </div>       
+        
+
+        
+    </div>
+</div>
+{% endblock %}
